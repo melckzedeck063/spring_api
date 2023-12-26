@@ -3,14 +3,12 @@ package com.example.srms.Controller;
 import com.example.srms.Model.Student;
 import com.example.srms.Service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "/api/v1/students")
+@RequestMapping(path = "/api/v1/students/")
 public class StudentController {
 
 
@@ -21,9 +19,29 @@ public class StudentController {
         this.studentService = studentService;
     }
 
-    @GetMapping
+    @GetMapping(path = "get_students")
     public List<Student> students(){
         return studentService.getStudents();
+    }
+
+    @PostMapping(path = "create_student")
+    public void registerStudent (@RequestBody Student student){
+        studentService.addNewStudent(student);
+    }
+
+    @DeleteMapping(path = "delete/{studentId}")
+    public void deleteStudent (@PathVariable("studentId") Long studentId){
+
+        studentService.deleteStudent(studentId);
+    }
+
+    @PutMapping(path = "update_student/{studentId}")
+
+    public void updateStudent (@PathVariable("studentId") Long studentId,
+                               @RequestParam(required = false) String name,
+                               @RequestParam(required = false) String email
+                              ){
+        studentService.updateStudent(studentId,name, email);
     }
 
 }
