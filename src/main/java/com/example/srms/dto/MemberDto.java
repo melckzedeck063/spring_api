@@ -13,9 +13,11 @@ import java.time.LocalDateTime;
 @Builder
 public class MemberDto {
     private Long id;
-    private String name;
+    private String firstName;
+    private String lastName;
     private String email;
     private LocalDate dob;
+    private String phone;
     @Transient
     private Integer age;
     private String gender;

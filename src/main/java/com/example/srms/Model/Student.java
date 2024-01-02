@@ -17,6 +17,7 @@ import java.time.LocalDateTime;
 @Table(name = "members")
 public class Student {
 
+
     @Id
     @SequenceGenerator(
             name = "student_sequence",
@@ -28,18 +29,21 @@ public class Student {
             generator = "student_sequence"
     )
     private Long id;
-    private String name;
+    private String firstName;
+    private String lastName;
     private String email;
     private LocalDate dob;
+    public String phone;
     @Transient
     private Integer age;
 
     private String gender;
+    private String password;
     @CreationTimestamp
     private LocalDateTime createdAt;
     @UpdateTimestamp
     private LocalDateTime updatedAt;
 
-    public Student(String zedeck, String mail, LocalDate of, String male, LocalDateTime now, LocalDateTime now1) {
+    public Student(String firstName, String lastName, String mail, LocalDate of, String phone, String male, LocalDateTime now, LocalDateTime now1) {
     }
 }
