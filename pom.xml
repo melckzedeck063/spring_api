@@ -61,11 +61,7 @@
 			<artifactId>springdoc-openapi-ui</artifactId>
 			<version>1.6.11</version>
 		</dependency>
-		<dependency>
-			<groupId>io.leangen.graphql</groupId>
-			<artifactId>graphql-spqr-spring-boot-starter</artifactId>
-			<version>0.0.5</version>
-		</dependency>
+
 		<dependency>
 			<groupId>io.jsonwebtoken</groupId>
 			<artifactId>jjwt-api</artifactId>

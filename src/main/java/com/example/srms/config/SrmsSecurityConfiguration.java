@@ -33,12 +33,10 @@ public class SrmsSecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Autowired
     private AuthenticationEntryPoint unauthorizedHandler;
 
+
+    @Autowired
     private PasswordEncoder passwordEncoder;
 
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
 
     @Bean
     public AuthTokenFilter authenticationJwtTokenFilter() {
@@ -50,6 +48,8 @@ public class SrmsSecurityConfiguration extends WebSecurityConfigurerAdapter {
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return  super.authenticationManagerBean();
     }
+
+
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -72,7 +72,6 @@ public class SrmsSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/gui").permitAll()
                 .antMatchers("/auth/**").permitAll()
                 .antMatchers("/api/v1/**").permitAll()
-                .antMatchers("/gui","/v3/**", "/swagger-ui/**").permitAll()
                 .anyRequest()
                 .authenticated();
 
